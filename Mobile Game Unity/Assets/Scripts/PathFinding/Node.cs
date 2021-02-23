@@ -21,6 +21,7 @@ public class Node
         {
             if((first.x == second.x) && (first.y == second.y))
             {
+              
                 return true;
             }
             else
@@ -80,6 +81,15 @@ public class Node
     public float getDistanceFromStart()
     {
         return m_distanceFromStart;
+    }
+    public Node returnPrev()
+    {
+        return prevNode;
+    }
+
+    public void setPrev(Node previousOne)
+    {
+        prevNode = previousOne;
     }
 
     public float getDistanceToEnd()

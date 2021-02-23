@@ -6,29 +6,45 @@ public class SearchLvl
 {
 
 
-    private LayerMask m_walls;
-    private LayerMask m_obstacles;
-    private LayerMask m_enemies;
-    private float m_height = 0f;
-    private float m_width = 0f;
+ 
     
 
-    public SearchLvl(float height, float width,LayerMask walls,LayerMask obstacles,LayerMask enemies)
+    private LayerMask m_impactedLayers;
+    private Collider2D m_targetCollider;
+    private float m_height;
+    private float m_width;
+    
+
+    public SearchLvl(LayerMask obstacles, Collider2D target,float height, float width)
     {
-        m_obstacles = obstacles;
-        m_enemies = enemies;
+      
+      
+        
+        m_impactedLayers = obstacles;
+        m_targetCollider = target;
         m_height = height;
         m_width = width;
-        m_walls = walls;
+  
+       
     }
 
     public bool isWalkable(float posX, float posY)
     {
-        Vector2 myPosition = new Vector2(posX, posY);
-        Vector2 size = new Vector2(1, 1);
-        
-        Physics2D.OverlapBox(myPosition, size, 0, m_walls); 
-        if ((Physics2D.OverlapBox(myPosition, size, 0, m_walls) ==true) || (Physics2D.OverlapBox(myPosition, size, 0, m_obstacles) ==true ) || (Physics2D.OverlapBox(myPosition,size,0,m_enemies) ==true))
+        if(posX > (m_width/2) || posX < -(m_width/2) || posY >(m_height/2) || posY < -(m_height/2))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+        /*Vector2 myPosition = new Vector2(posX, posY);
+    
+        Collider2D[] overlappingColliders = new Collider2D[10];
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.layerMask = m_impactedLayers;
+        int amount = m_targetCollider.OverlapCollider(filter, overlappingColliders);
+        if ( amount > 0)
         {
             //check if you overlap with enemies, walls or obstacles [defined by layermasks]
             return false;
@@ -37,10 +53,12 @@ public class SearchLvl
         {
             return true;
         }
+        */
+        
         
     }
 
-    public List<Node.Position> getAdjacentNodes(float posX, float posY)
+    public List<Node.Position> getAdjacentNodes(float posX, float posY,float colWidth, float colHeight)
     { 
 
         //ADD A STEP INSTEAD OF 1 THAT IS THE SIZE OF THE GRID CELL
@@ -48,63 +66,63 @@ public class SearchLvl
         Node.Position current = new Node.Position();
         current.setValues(posX,posY);
        
-        if(isWalkable(current.x+1,current.y) == true)
+        if(isWalkable(current.x+ colWidth, current.y) == true)
             {
             Node.Position plusOneX = new Node.Position();
-            plusOneX.setValues(posX+1, posY);
+            plusOneX.setValues(posX+ colWidth, posY);
             m_results.Add(plusOneX);
 
             }
 
-        if (isWalkable(current.x - 1, current.y) == true)
+        if (isWalkable(current.x - colWidth, current.y) == true)
         {
             Node.Position minusOneX = new Node.Position();
-            minusOneX.setValues(posX - 1, posY);
+            minusOneX.setValues(posX - colWidth, posY);
             m_results.Add(minusOneX);
 
         }
 
-        if (isWalkable(current.x , current.y +1 ) == true)
+        if (isWalkable(current.x , current.y + colHeight) == true)
         {
             Node.Position plusOneY = new Node.Position();
-            plusOneY.setValues(posX , posY + 1 );
+            plusOneY.setValues(posX , posY + colHeight);
             m_results.Add(plusOneY);
 
         }
 
-        if (isWalkable(current.x, current.y -1 ) == true)
+        if (isWalkable(current.x, current.y - colHeight) == true)
         {
             Node.Position minusOneY = new Node.Position();
-            minusOneY.setValues(posX , posY -1 );
+            minusOneY.setValues(posX , posY - colHeight);
             m_results.Add(minusOneY);
 
         }
 
-        if (isWalkable(current.x + 1, current.y + 1) == true)
+        if (isWalkable(current.x + colWidth, current.y + colHeight) == true)
         {
             Node.Position plusOneXplusY = new Node.Position();
-            plusOneXplusY.setValues(posX + 1, posY +1);
+            plusOneXplusY.setValues(posX + colWidth, posY + colHeight);
             m_results.Add(plusOneXplusY);
 
         }
-        if (isWalkable(current.x + 1, current.y -1 ) == true)
+        if (isWalkable(current.x + colWidth, current.y - colHeight) == true)
         {
             Node.Position plusOneXminusY = new Node.Position();
-            plusOneXminusY.setValues(posX + 1, posY -1 );
+            plusOneXminusY.setValues(posX + colWidth, posY - colHeight);
             m_results.Add(plusOneXminusY);
 
         }
-        if (isWalkable(current.x - 1, current.y - 1) == true)
+        if (isWalkable(current.x - colWidth, current.y - colHeight) == true)
         {
             Node.Position minusOneXminusY= new Node.Position();
-            minusOneXminusY.setValues(posX -1, posY -1);
+            minusOneXminusY.setValues(posX - colWidth, posY - colHeight);
             m_results.Add(minusOneXminusY);
 
         }
-        if (isWalkable(current.x - 1, current.y +1) == true)
+        if (isWalkable(current.x - colWidth, current.y + colHeight) == true)
         {
             Node.Position minusOneXplusY = new Node.Position();
-            minusOneXplusY.setValues(posX -1, posY +1);
+            minusOneXplusY.setValues(posX - colWidth, posY + colHeight);
             m_results.Add(minusOneXplusY);
 
         }

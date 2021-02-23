@@ -41,6 +41,17 @@ public class OpenList
         m_openList.RemoveAt(0);
     }
 
+    public Node get0()
+    {
+        return m_openList[0];
+    }
+
+    public Node returnAt(int iterat)
+    {
+        return m_openList[iterat];
+    }
+
+    
     public bool isEmpty()
     {
         m_isEmpty = !m_openList.Any();
