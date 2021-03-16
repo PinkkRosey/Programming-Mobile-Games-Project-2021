@@ -6,7 +6,7 @@ using System.Linq;
 public class OpenList
 {
    
-        private List<Node> m_openList = new List<Node>();
+    private List<Node> m_openList = new List<Node>();
 
     private bool m_isEmpty;
     public void insertToOpenList(Node n)

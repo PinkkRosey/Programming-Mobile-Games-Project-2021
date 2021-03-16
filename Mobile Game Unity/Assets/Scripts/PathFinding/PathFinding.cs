@@ -28,6 +28,12 @@ public class PathFinding : MonoBehaviour
 
     private int finals = 2;
    private int d =0;
+    private bool runThis =false;
+    
+    [SerializeField] private Node results = new Node();
+   public EnemyPathing finalPath = null;
+    private Node.Position m_old;
+    private Node.Position m_new;
 
     PathFinding(Node.Position end, Node.Position start,Node.Position current)
     {
@@ -53,56 +59,36 @@ public class PathFinding : MonoBehaviour
         
         m_start.setValues(this.transform.position.x, this.transform.position.y);
         m_end.setValues(target.transform.position.x, target.transform.position.y);
+       
+        m_new = m_end;
         m_current.setValues(this.transform.position.x, this.transform.position.y);
         Debug.Log("Width: " + m_mapWidth + " Height: " + m_mapHeight);
        
 
     }
-    public void testing()
-    {
 
-            //transform.position = Vector3.MoveTowards(new Vector2(results.getPosition().x, results.getPosition().y), new Vector2(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y), step);
-
-
-            //Debug.Log(this.transform.position);
-            
-
-            //Vector3 targetVec = new Vector3(final.returnPrev().getPosition().x, final.returnPrev().getPosition().y, 0);
-            //Debug.Log(targetVec);
-            //transform.position = Vector3.MoveTowards(this.transform.position, targetVec, 1f);
-
-            //final = final.returnPrev();
-        
-    }
-   
-    public void Lops()
-    {
-        int c =0;
-        while(true)
-        {
-            c++;
-            Debug.Log("this is c" + c);
-            if (c>5)
-            {
-                finals = 1;
-                break;
-            }
-                }
-    }
 
     void Update()
     {
        m_current.setValues(this.transform.position.x, this.transform.position.y);
 
+        m_new.setValues(target.transform.position.x, target.transform.position.y);
+        if(m_old.x != m_new.x || m_old.y != m_new.y) //check if the values have changed since last update
+        {
+            if (this.gameObject.GetComponent<EnemyMovement>().disableMovement == false)
+            {
+                m_end.setValues(target.transform.position.x, target.transform.position.y);
+                doPathFinding();
+            }
+
+        }
+        m_old = m_new;
+           
+        
        
-            doPathFinding();
         
 
-        if(finals != 1)
-        {
-            Lops();
-        }
-
+       
        
        
        
@@ -118,15 +104,16 @@ public class PathFinding : MonoBehaviour
         Debug.DrawLine(new Vector2(x + m_halfWidth, y - m_halfHeight), new Vector2(x - m_halfWidth, y - m_halfHeight), Color.green, 20, false);
 
     }
-    
-  
+
+
     public void doPathFinding()
     {
-        Node results = null;
+        
         
         Node firstNode = new Node(m_current, null, m_end, m_start);
+        finalPath = new EnemyPathing();
+    OpenList openedList = new OpenList();
         
-        OpenList openedList = new OpenList();
         openedList.insertToOpenList(firstNode);
         
         ClosedList closedList = new ClosedList();
@@ -135,13 +122,17 @@ public class PathFinding : MonoBehaviour
         while(openedList.isEmpty() == false)
         {
             
-            Node secondNode = openedList.get0();
+             Node secondNodes = openedList.get0();
+            Node secondNode = new Node(secondNodes.getPosition(), secondNodes.returnPrev(),m_end, m_start);
+         
+           
             openedList.remove0Fromlist();
             closedList.insertToClosedList(secondNode);
             if( Physics2D.OverlapBox(new Vector2(secondNode.getPosition().x, secondNode.getPosition().y),Vector2.one,0,targetMask))
                 {
+
                 results = secondNode;
-                
+              
                 break;
             }
            
@@ -159,7 +150,7 @@ public class PathFinding : MonoBehaviour
                 }
 
                 int inter = openedList.findFromOpenList(secondNode.getPosition()); //returns -1 if there was no match, iterator cant be negative anyway
-                Node previousNode = new Node(adjacentPositions[i], firstNode, m_end, m_start);
+                Node previousNode = new Node(adjacentPositions[i], secondNode, m_end, m_start);
                 if (inter != -1)
                 {
                     //has been found in open list
@@ -175,7 +166,7 @@ public class PathFinding : MonoBehaviour
                 {
                 
                     
-                    lineDrawer(previousNode.getPosition().x, previousNode.getPosition().y);
+                    //lineDrawer(previousNode.getPosition().x, previousNode.getPosition().y);
                     openedList.insertToOpenList(previousNode);
                 }
 
@@ -196,31 +187,26 @@ public class PathFinding : MonoBehaviour
                 }
                 else
                 {
-                    Debug.DrawLine(new Vector2(results.getPosition().x, results.getPosition().y), new Vector2(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y), Color.red, 100, false);
-
+                    Debug.DrawLine(new Vector2(results.getPosition().x, results.getPosition().y), new Vector2(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y), Color.red, 1, false);
+                    finalPath.insertToPath(results);
+                  //draw a line to prev
+                    results = results.returnPrev();
                 }
-                d++;
-                Debug.Log(d);
-                //transform.position = Vector3.MoveTowards(new Vector2(results.getPosition().x, results.getPosition().y), new Vector2(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y), step);
-
-                //Debug.Log("X: " +results.getPosition().x);
-                //Debug.Log(" New X: "+this.transform.position);
-                //Debug.Log(testad);
                 
-                Vector3 targetVec = new Vector3(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y, 0);
-                //Debug.Log(targetVec);
-                //transform.position = Vector3.MoveTowards(this.transform.position, targetVec, 1f);
-                Debug.Log(results.returnPrev().getPosition().x);
-                results = results.returnPrev();
+            
             }
+           finalPath.Reversed();
            
         }
         else
         {
+            finalPath = null;
             Debug.Log("not found");
-            resultNotFound = 1;
-            finals = 1;
+            
+            
         }
 
     }
+
+
 }

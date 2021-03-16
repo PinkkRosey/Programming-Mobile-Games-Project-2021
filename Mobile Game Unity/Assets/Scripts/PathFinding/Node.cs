@@ -51,8 +51,13 @@ public class Node
         resetPrevious(prev);
 
     }
+    public Node()
+    {
+        prevNode = null;
+     
 
-   
+    }
+
     private void resetPrevious(Node prev)
     {
         prevNode = prev;

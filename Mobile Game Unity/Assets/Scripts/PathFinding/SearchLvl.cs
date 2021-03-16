@@ -36,24 +36,19 @@ public class SearchLvl
         }
         else
         {
-            return true;
+            Vector2 myPosition = new Vector2(posX, posY);
+
+            if (Physics2D.OverlapBox(myPosition, Vector2.one, 0, m_impactedLayers))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
-        /*Vector2 myPosition = new Vector2(posX, posY);
-    
-        Collider2D[] overlappingColliders = new Collider2D[10];
-        ContactFilter2D filter = new ContactFilter2D();
-        filter.layerMask = m_impactedLayers;
-        int amount = m_targetCollider.OverlapCollider(filter, overlappingColliders);
-        if ( amount > 0)
-        {
-            //check if you overlap with enemies, walls or obstacles [defined by layermasks]
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-        */
+      
+        
         
         
     }
