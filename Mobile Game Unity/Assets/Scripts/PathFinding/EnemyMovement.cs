@@ -6,8 +6,9 @@ public class EnemyMovement : MonoBehaviour
 {
     public bool disableMovement = false;
     public float timeRemaining = 3f;
+    [SerializeField] private float movementSpeed;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         EnemyPathing finalPath = this.gameObject.GetComponent<PathFinding>().finalPath;
         if (finalPath != null)
@@ -27,14 +28,14 @@ public class EnemyMovement : MonoBehaviour
                     if (finalPath.get0() != null)
                     {
                         movementTarget = new Vector3(finalPath.get0().getPosition().x, finalPath.get0().getPosition().y, 0);
-                        transform.position = Vector3.MoveTowards(transform.position, movementTarget, 0.05f);
+                        transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
                     }
 
                     //reassign the target pos to a new spot
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, movementTarget, 0.05f);
+                    transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
                 }
 
                 //move
