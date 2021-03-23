@@ -22,8 +22,7 @@ public class MovementJoystick: MonoBehaviour
 
     public void PointerDown()
     {
-        joystick.transform.position = Input.mousePosition;
-        joystickBG.transform.position = Input.mousePosition;
+        
         joystickTouchPos = Input.mousePosition;
     }
     public void Drag(BaseEventData baseEventData)
@@ -33,16 +32,17 @@ public class MovementJoystick: MonoBehaviour
         joystickVec = (dragPos - joystickTouchPos).normalized;
 
         float joystickDist = Vector2.Distance(dragPos, joystickTouchPos);
-
+        
         if(joystickDist<joystickRadius)
         {
-            joystick.transform.position = joystickTouchPos + joystickVec * joystickDist;
+            joystick.transform.position = joystickOriginalPos + joystickVec * joystickDist;
         }
 
         else
         {
-            joystick.transform.position = joystickTouchPos + joystickVec * joystickRadius;
+            joystick.transform.position = joystickOriginalPos + joystickVec * joystickRadius;
         }    
+        
 
     }
     public void PointerUp()
