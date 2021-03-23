@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
         
         if(movementJoystick.joystickVec.y != 0)
         {
+          
             rb.velocity = new Vector2(movementJoystick.joystickVec.x * playerSpeed, movementJoystick.joystickVec.y * playerSpeed);
 
         }

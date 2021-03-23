@@ -223,26 +223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &168029562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267,
-    type: 3}
-  m_PrefabInstance: {fileID: 2144227871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &168029563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168029562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45f828252424144c967c28410b155ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementJoystick: {fileID: 417343385}
-  playerSpeed: 2
 --- !u!1 &179602833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2736,7 @@ GameObject:
   - component: {fileID: 1780546427}
   - component: {fileID: 1780546429}
   - component: {fileID: 1780546428}
+  - component: {fileID: 1780546430}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -4631,6 +4612,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1780546430
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780546426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &1963671611
 GameObject:
   m_ObjectHideFlags: 0
@@ -4842,6 +4839,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 168029563, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
+      propertyPath: playerSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 168029563, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
+      propertyPath: movementJoystick
+      value: 
+      objectReference: {fileID: 417343385}
     - target: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_Name
