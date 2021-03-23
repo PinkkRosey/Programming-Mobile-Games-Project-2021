@@ -28,7 +28,7 @@ public class SearchLvl
        
     }
 
-    public bool isWalkable(float posX, float posY)
+    public bool isWalkable(float posX, float posY,float colWidth, float colHeight)
     {
         if(posX > (m_width/2) || posX < -(m_width/2) || posY >(m_height/2) || posY < -(m_height/2))
         {
@@ -37,8 +37,8 @@ public class SearchLvl
         else
         {
             Vector2 myPosition = new Vector2(posX, posY);
-
-            if (Physics2D.OverlapBox(myPosition, Vector2.one, 0, m_impactedLayers))
+            Debug.Log(colHeight);
+            if (Physics2D.OverlapBox(myPosition,new Vector2(colWidth,colHeight),0, m_impactedLayers))
             {
                 return false;
             }
@@ -61,63 +61,63 @@ public class SearchLvl
         Node.Position current = new Node.Position();
         current.setValues(posX,posY);
        
-        if(isWalkable(current.x+ colWidth, current.y) == true)
+        if(isWalkable(current.x+ (colWidth/2), current.y ,colWidth, colHeight) == true)
             {
             Node.Position plusOneX = new Node.Position();
-            plusOneX.setValues(posX+ colWidth, posY);
+            plusOneX.setValues(posX+ (colWidth / 2), posY );
             m_results.Add(plusOneX);
 
             }
 
-        if (isWalkable(current.x - colWidth, current.y) == true)
+        if (isWalkable(current.x - (colWidth / 2), current.y, colWidth, colHeight) == true)
         {
             Node.Position minusOneX = new Node.Position();
-            minusOneX.setValues(posX - colWidth, posY);
+            minusOneX.setValues(posX - (colWidth / 2), posY);
             m_results.Add(minusOneX);
 
         }
 
-        if (isWalkable(current.x , current.y + colHeight) == true)
+        if (isWalkable(current.x , current.y + (colHeight/2), colWidth, colHeight) == true)
         {
             Node.Position plusOneY = new Node.Position();
-            plusOneY.setValues(posX , posY + colHeight);
+            plusOneY.setValues(posX , posY + colHeight/2);
             m_results.Add(plusOneY);
 
         }
 
-        if (isWalkable(current.x, current.y - colHeight) == true)
+        if (isWalkable(current.x, current.y - (colHeight/2), colWidth, colHeight) == true)
         {
             Node.Position minusOneY = new Node.Position();
-            minusOneY.setValues(posX , posY - colHeight);
+            minusOneY.setValues(posX , posY - colHeight/2);
             m_results.Add(minusOneY);
 
         }
 
-        if (isWalkable(current.x + colWidth, current.y + colHeight) == true)
+        if (isWalkable(current.x + colWidth / 2, current.y + (colHeight/2), colWidth, colHeight) == true)
         {
             Node.Position plusOneXplusY = new Node.Position();
-            plusOneXplusY.setValues(posX + colWidth, posY + colHeight);
+            plusOneXplusY.setValues(posX + colWidth / 2, posY + colHeight/2);
             m_results.Add(plusOneXplusY);
 
         }
-        if (isWalkable(current.x + colWidth, current.y - colHeight) == true)
+        if (isWalkable(current.x + colWidth/2, current.y - colHeight/2, colWidth, colHeight) == true)
         {
             Node.Position plusOneXminusY = new Node.Position();
-            plusOneXminusY.setValues(posX + colWidth, posY - colHeight);
+            plusOneXminusY.setValues(posX + colWidth / 2, posY - colHeight/2);
             m_results.Add(plusOneXminusY);
 
         }
-        if (isWalkable(current.x - colWidth, current.y - colHeight) == true)
+        if (isWalkable(current.x - colWidth / 2, current.y - colHeight/2, colWidth, colHeight) == true)
         {
             Node.Position minusOneXminusY= new Node.Position();
-            minusOneXminusY.setValues(posX - colWidth, posY - colHeight);
+            minusOneXminusY.setValues(posX - colWidth / 2, posY - colHeight/2);
             m_results.Add(minusOneXminusY);
 
         }
-        if (isWalkable(current.x - colWidth, current.y + colHeight) == true)
+        if (isWalkable(current.x - colWidth / 2, current.y + colHeight / 2,colWidth, colHeight) == true)
         {
             Node.Position minusOneXplusY = new Node.Position();
-            minusOneXplusY.setValues(posX - colWidth, posY + colHeight);
+            minusOneXplusY.setValues(posX - colWidth / 2, posY + colHeight / 2);
             m_results.Add(minusOneXplusY);
 
         }

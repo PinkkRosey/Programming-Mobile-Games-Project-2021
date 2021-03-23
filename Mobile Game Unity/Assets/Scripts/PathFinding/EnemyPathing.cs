@@ -33,5 +33,10 @@ public class EnemyPathing
         return m_isEmpty;
     }
 
+    public int returnCount()
+    {
+        return m_enemyPath.Count;
+    }
+
    
 }
