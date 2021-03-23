@@ -1,0 +1,65 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Attacking : MonoBehaviour
+{
+    [SerializeField] private MovementJoystick movementJoystick;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private GameObject doorClosed;
+    [SerializeField] private GameObject doorOpen;
+    private bool attack = true;
+    private void FixedUpdate()
+    {
+        if (movementJoystick.joystickVec.y != 0)
+
+        {
+            //only attack while moveing
+            return;
+        }
+        else if(attack ==true)
+        {
+            attack = false; //Set it to false to avoid running again until 1 sec has passed
+            Invoke("Attack", 0.3f);
+            
+        }
+    }
+
+    private void Attack()
+    {
+        
+        List<GameObject> enemies = new List<GameObject>();
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemies.Add(go);
+            sortEnemyListList(enemies);
+
+        }
+
+        if(enemies.Count >0)
+        {
+            float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
+            if(distanceTo <=5)
+            {
+                Vector3 direction = -(this.transform.position - enemies[0].transform.position) * 10;
+                GameObject particle = Instantiate(bullet, spawnPoint);
+                particle.GetComponent<Rigidbody2D>().velocity = direction;
+            }
+            attack = true;
+
+        }
+
+        if(enemies.Count ==0)
+        { doorClosed.SetActive(false);
+            doorOpen.SetActive(true);
+        }
+        
+    }
+    public void sortEnemyListList(List<GameObject> enemies)
+    {
+        enemies.Sort((x, y) => Vector2.Distance(x.transform.position,this.transform.position).CompareTo(Vector2.Distance(y.transform.position, this.transform.position)));
+        //Sort the list based on distance
+    }
+
+}

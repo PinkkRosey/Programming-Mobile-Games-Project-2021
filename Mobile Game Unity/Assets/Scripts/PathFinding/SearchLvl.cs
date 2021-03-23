@@ -30,14 +30,9 @@ public class SearchLvl
 
     public bool isWalkable(float posX, float posY,float colWidth, float colHeight)
     {
-        if(posX > (m_width/2) || posX < -(m_width/2) || posY >(m_height/2) || posY < -(m_height/2))
-        {
-            return false;
-        }
-        else
-        {
+      
             Vector2 myPosition = new Vector2(posX, posY);
-            Debug.Log(colHeight);
+           
             if (Physics2D.OverlapBox(myPosition,new Vector2(colWidth,colHeight),0, m_impactedLayers))
             {
                 return false;
@@ -46,7 +41,7 @@ public class SearchLvl
             {
                 return true;
             }
-        }
+        
       
         
         

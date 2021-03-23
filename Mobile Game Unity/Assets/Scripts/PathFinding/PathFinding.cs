@@ -8,15 +8,12 @@ public class PathFinding : MonoBehaviour
     [SerializeField] private Node.Position m_current;
     [SerializeField] private Node.Position m_start;
 
-
-
-  
     [SerializeField] private LayerMask obstacles;
     [SerializeField] private BoxCollider2D current;
     [SerializeField] private GameObject target;
     [SerializeField] private BoxCollider2D gameArea;
     [SerializeField] private LayerMask targetMask;
-    [SerializeField] private bool test2;
+
     [SerializeField] private EnemyMovement enemyMove;
     private float m_halfWidth;
     private float m_halfHeight;
@@ -24,13 +21,7 @@ public class PathFinding : MonoBehaviour
     private int resultNotFound;
     private float m_mapWidth;
     private float m_mapHeight;
-    private float speed = 000.3f;
-    private int looperino = 0;
 
-    private int finals = 2;
-   private int d =0;
-    private bool runThis =false;
-    
      private Node results = new Node();
    public EnemyPathing finalPath = null;
     private Node.Position m_old;
@@ -64,7 +55,7 @@ public class PathFinding : MonoBehaviour
        
         m_new = m_end;
         m_current.setValues(this.transform.position.x, this.transform.position.y);
-        Debug.Log("Width: " + m_mapWidth + " Height: " + m_mapHeight);
+       
        
 
     }
@@ -72,27 +63,35 @@ public class PathFinding : MonoBehaviour
 
     void Update()
     {
-        if (enemyMove.hasMovedToNextPos)
+        m_current.setValues(this.transform.position.x, this.transform.position.y);
+
+        m_new.setValues(target.transform.position.x, target.transform.position.y);
+        m_end.setValues(target.transform.position.x, target.transform.position.y);
+      
+        float distanceTo = Vector2.Distance(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(target.transform.position.x, target.transform.position.y));
+        if (distanceTo <= 6)
         {
 
 
-            //Only do this everytime the player has moved once, dont keep checking!
-            m_current.setValues(this.transform.position.x, this.transform.position.y);
-
-            m_new.setValues(target.transform.position.x, target.transform.position.y);
-            if (m_old.x != m_new.x || m_old.y != m_new.y || (finalPath == null && results != null)) //check if the values have changed since last update also do an extra check if there is a path(results) BUT for some reason our final path is null!! THIS SHOULD NEVER OCCUR!!! But if it were to i want to make a go around
+            if (enemyMove.hasMovedToNextPos)
             {
-                if (this.gameObject.GetComponent<EnemyMovement>().disableMovement == false)
-                {
-                    m_end.setValues(target.transform.position.x, target.transform.position.y);
-                    doPathFinding();
-                }
 
+
+                //Only do this everytime the player has moved once, dont keep checking!
+
+                if (m_old.x != m_new.x || m_old.y != m_new.y) //check if the values have changed since last update also do an extra check if there is a path(results) BUT for some reason our final path is null!! THIS SHOULD NEVER OCCUR!!! But if it were to i want to make a go around
+                {
+                    if (enemyMove.disableMovement == false)
+                    {
+
+                        doPathFinding();
+                    }
+
+                }
+                m_old = m_new;
             }
-            m_old = m_new;
+
         }
-           
-        
        
         
 
@@ -116,7 +115,7 @@ public class PathFinding : MonoBehaviour
 
     public void doPathFinding()
     {
-        Debug.Log(current.size.x + "Y:"+ current.size.y);
+        
 
 
         Node firstNode = new Node(m_current, null, m_end, m_start);
@@ -137,7 +136,7 @@ public class PathFinding : MonoBehaviour
            
             openedList.remove0Fromlist();
             closedList.insertToClosedList(secondNode);
-            if( Physics2D.OverlapBox(new Vector2(secondNode.getPosition().x, secondNode.getPosition().y),Vector2.one,0,targetMask))
+            if( Physics2D.OverlapBox(new Vector2(secondNode.getPosition().x, secondNode.getPosition().y),new Vector2(current.size.x,current.size.y),0,targetMask))
                 {
 
                 results = secondNode;
@@ -145,7 +144,7 @@ public class PathFinding : MonoBehaviour
                 break;
             }
 
-            Debug.Log(current.size.x + current.size.y);
+           
             List<Node.Position> adjacentPositions = search_lvl.getAdjacentNodes(secondNode.getPosition().x, secondNode.getPosition().y,current.size.x, current.size.y);
           
             for(int i = 0; i< adjacentPositions.Count; i++)
@@ -192,17 +191,18 @@ public class PathFinding : MonoBehaviour
                 
                 if(results.returnPrev() == null)
                 {
-                    break;
+
+                    finalPath.insertToPath(results);
+                    results = null;
                 }
                 else
                 {
-                    Debug.DrawLine(new Vector2(results.getPosition().x, results.getPosition().y), new Vector2(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y), Color.red, 1, false);
+                    //Debug.DrawLine(new Vector2(results.getPosition().x, results.getPosition().y), new Vector2(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y), Color.red, 1, false);
                     finalPath.insertToPath(results);
                   //draw a line to prev
                     results = results.returnPrev();
                 }
-                
-            
+               
             }
            finalPath.Reversed();
            

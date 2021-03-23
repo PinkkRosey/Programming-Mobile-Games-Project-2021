@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public bool hasMovedToNextPos ;
     [SerializeField] private float movementSpeed;
     [SerializeField] private PathFinding enemyPath;
+    [SerializeField] private GameObject player;
    
     // Update is called once per frame
     
@@ -22,75 +23,82 @@ public class EnemyMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
-
-        if (enemyPath.finalPath != null)
+        float distanceTo = Vector2.Distance(this.transform.position, player.transform.position);
+        if (distanceTo <= 6)
         {
 
 
-            //only run it if its not null
-            
-            if (enemyPath.finalPath.returnCount() >0 && disableMovement == false)
+
+            if (enemyPath.finalPath != null)
             {
 
-               
-                Vector3 movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
-                //if it has travelled to the next pos
-                if (transform.position == movementTarget)
+
+                //only run it if its not null
+
+                if (enemyPath.finalPath.returnCount() > 0 && disableMovement == false)
                 {
-                    
-                    hasMovedToNextPos = true;
-                    enemyPath.finalPath.remove0Fromlist();
-                    if (enemyPath.finalPath.returnCount() >0)
+
+
+                    Vector3 movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
+                    //if it has travelled to the next pos
+                    if (transform.position == movementTarget)
                     {
-                        
-                        movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
-                        transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
+
+                        hasMovedToNextPos = true;
+                        enemyPath.finalPath.remove0Fromlist();
+                        if (enemyPath.finalPath.returnCount() > 0)
+                        {
+
+                            movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
+                            transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
+                        }
+                        else
+                        {
+                            return;
+                        }
+
+                        //reassign the target pos to a new spot
                     }
                     else
                     {
-                        return;
+                        hasMovedToNextPos = false;
+                        transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
                     }
 
-                    //reassign the target pos to a new spot
-                }
-                else
-                {
-                    hasMovedToNextPos = false;
-                    transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
+                    //move
                 }
 
-                //move
             }
-
         }
-        
     }
   
     void OnTriggerEnter2D(Collider2D collision)
     {
       
-     if(collision.gameObject.tag == "character" )
+     if(collision.gameObject.tag == "CollisionCheck" )
         {
-
+            
             hasMovedToNextPos = true;
             
             disableMovement = true;
         }
+       
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "character")
+        if (collision.gameObject.tag == "CollisionCheck")
         {
-          
+           
             Invoke("DisableMovement", 0.5f);
         }
+      
     }
 
     void DisableMovement()
     {
         
         disableMovement = false;
+       
     }
 }
