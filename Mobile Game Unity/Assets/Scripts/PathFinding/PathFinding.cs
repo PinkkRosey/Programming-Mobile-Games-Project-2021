@@ -81,7 +81,7 @@ public class PathFinding : MonoBehaviour
         float distanceTo = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), new Vector2(target.transform.position.x, target.transform.position.y));
         
        
-        if (distanceTo <= 6)
+        if (distanceTo <= 4)
         {
             activatePath = true;
         }
@@ -229,7 +229,7 @@ public class PathFinding : MonoBehaviour
                 {
                 
                     
-                    lineDrawer(previousNode.getPosition().x, previousNode.getPosition().y); 
+                    //lineDrawer(previousNode.getPosition().x, previousNode.getPosition().y); 
                     //This method just creates a box, used for debugging purposes only!
                     openedList.insertToOpenList(previousNode);
                 }

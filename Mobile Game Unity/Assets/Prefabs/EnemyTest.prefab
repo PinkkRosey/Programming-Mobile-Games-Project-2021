@@ -451,7 +451,7 @@ MonoBehaviour:
   disableMovement: 0
   timeRemaining: 3
   hasMovedToNextPos: 0
-  movementSpeed: 0.06
+  movementSpeed: 0.07
   enemyPath: {fileID: 8474629556110092952}
   player: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
 --- !u!114 &890333053

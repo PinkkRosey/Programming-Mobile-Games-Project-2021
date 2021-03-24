@@ -32,6 +32,10 @@ public class Attacking : MonoBehaviour
             Invoke("Attack", 0.3f);
             
         }
+        
+    }
+    private void Update()
+    {
         if (enemiesLength == 0)
         {
             doorClosed.SetActive(false);
@@ -58,7 +62,7 @@ public class Attacking : MonoBehaviour
         {
             enemyCounting();
             float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
-            if(distanceTo <=5)
+            if(distanceTo <=4)
             {
                 Vector3 direction = -(this.transform.position - enemies[0].transform.position).normalized *5;
                if(enemies[0].GetComponent<EnemyHealth>().enemyHealth>=1)

@@ -227,18 +227,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2144227871}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &417343385 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5219942224022470271, guid: 155fe7d06211ac14e8c8b103a8da17a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 5219942223605127654}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a05d4e2c2dc440449b0ac409942340c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &472329939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,6 +2253,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18effab46689f08479d64335691cddd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &650324959 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8591710433126630028, guid: 12f2a6d58d9f7934885f8ea152aa944a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8591710433242036476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &949931406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2369,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2388,11 +2382,11 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 8145951374611147372, guid: ca1fe683d8872314481b6dbcd87cb1d1,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
@@ -5004,7 +4998,7 @@ PrefabInstance:
     - target: {fileID: 168029563, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: movementJoystick
       value: 
-      objectReference: {fileID: 417343385}
+      objectReference: {fileID: 5219942223605127655}
     - target: {fileID: 528171343, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: doorOpen
       value: 
@@ -5016,7 +5010,7 @@ PrefabInstance:
     - target: {fileID: 528171343, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: movementJoystick
       value: 
-      objectReference: {fileID: 417343385}
+      objectReference: {fileID: 5219942223605127655}
     - target: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_Name
@@ -5030,12 +5024,12 @@ PrefabInstance:
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.35
+      value: -0.826
       objectReference: {fileID: 0}
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: -8.05
       objectReference: {fileID: 0}
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
@@ -5196,13 +5190,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5219942223667420313, guid: 155fe7d06211ac14e8c8b103a8da17a1,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 650324959}
     - target: {fileID: 5219942223667420314, guid: 155fe7d06211ac14e8c8b103a8da17a1,
         type: 3}
       propertyPath: m_Name
       value: Joystick
       objectReference: {fileID: 0}
+    - target: {fileID: 5219942224022470256, guid: 155fe7d06211ac14e8c8b103a8da17a1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -10.659973
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219942224022470256, guid: 155fe7d06211ac14e8c8b103a8da17a1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 19.710022
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 155fe7d06211ac14e8c8b103a8da17a1, type: 3}
+--- !u!114 &5219942223605127655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1347832576, guid: 155fe7d06211ac14e8c8b103a8da17a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5219942223605127654}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a05d4e2c2dc440449b0ac409942340c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5462236695755636525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5287,12 +5308,12 @@ PrefabInstance:
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.91
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}

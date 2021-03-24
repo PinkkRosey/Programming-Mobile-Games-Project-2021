@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private PathFinding enemyPath;
     [SerializeField] private GameObject player;
-    private bool activateMovement = false;
+   
     
     
 

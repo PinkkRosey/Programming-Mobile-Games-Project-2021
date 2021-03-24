@@ -317,18 +317,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!114 &570882532 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5219942224022470271, guid: 155fe7d06211ac14e8c8b103a8da17a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1745529050}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a05d4e2c2dc440449b0ac409942340c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &782441484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -339,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 8591710433126630028, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
@@ -349,12 +337,12 @@ PrefabInstance:
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.55
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
@@ -2096,6 +2084,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 155fe7d06211ac14e8c8b103a8da17a1, type: 3}
+--- !u!114 &1745529051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1347832576, guid: 155fe7d06211ac14e8c8b103a8da17a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1745529050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a05d4e2c2dc440449b0ac409942340c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1777167086
 GameObject:
   m_ObjectHideFlags: 0
@@ -4848,7 +4848,7 @@ PrefabInstance:
     - target: {fileID: 168029563, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: movementJoystick
       value: 
-      objectReference: {fileID: 570882532}
+      objectReference: {fileID: 1745529051}
     - target: {fileID: 528171343, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: doorOpen
       value: 
@@ -4860,7 +4860,7 @@ PrefabInstance:
     - target: {fileID: 528171343, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: movementJoystick
       value: 
-      objectReference: {fileID: 570882532}
+      objectReference: {fileID: 1745529051}
     - target: {fileID: 1190283514, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: m_Camera
       value: 

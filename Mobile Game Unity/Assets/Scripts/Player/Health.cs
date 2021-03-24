@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(HealthSave.currentHealth);
+        
         
     }
     private void OnTriggerEnter2D(Collider2D collision)
