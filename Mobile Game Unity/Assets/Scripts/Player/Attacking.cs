@@ -60,9 +60,13 @@ public class Attacking : MonoBehaviour
             float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
             if(distanceTo <=5)
             {
-                Vector3 direction = -(this.transform.position - enemies[0].transform.position) * 10;
-                GameObject particle = Instantiate(bullet, spawnPoint);
-                particle.GetComponent<Rigidbody2D>().velocity = direction;
+                Vector3 direction = -(this.transform.position - enemies[0].transform.position).normalized *5;
+               if(enemies[0].GetComponent<EnemyHealth>().enemyHealth>=1)
+                {
+                    GameObject particle = Instantiate(bullet, spawnPoint);
+                    particle.GetComponent<Rigidbody2D>().velocity = direction;
+                }
+                
             }
             attack = true;
 
