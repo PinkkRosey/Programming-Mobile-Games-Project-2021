@@ -202,7 +202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.46}
   m_SizeDelta: {x: 10, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &945018386
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &8474629556110092955
+--- !u!1 &1527453144
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,42 +274,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8474629556110092953}
-  - component: {fileID: 8474629556110092954}
-  - component: {fileID: 8474629556110092952}
-  - component: {fileID: 8474629556110092902}
-  - component: {fileID: 8474629556110092903}
-  - component: {fileID: 8474629556110092901}
-  - component: {fileID: 890333053}
+  - component: {fileID: 1527453145}
+  - component: {fileID: 1527453146}
   m_Layer: 0
-  m_Name: EnemyTest
-  m_TagString: Enemy
+  m_Name: GameObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8474629556110092953
+--- !u!4 &1527453145
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8474629556110092955}
+  m_GameObject: {fileID: 1527453144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 8.66, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
-  m_Children:
-  - {fileID: 945018383}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_LocalPosition: {x: 0, y: 0.67, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8474629556110092953}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8474629556110092954
+--- !u!212 &1527453146
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8474629556110092955}
+  m_GameObject: {fileID: 1527453144}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -354,6 +348,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8474629556110092955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8474629556110092953}
+  - component: {fileID: 8474629556110092952}
+  - component: {fileID: 8474629556110092903}
+  - component: {fileID: 8474629556110092901}
+  - component: {fileID: 890333053}
+  - component: {fileID: 60397741}
+  m_Layer: 0
+  m_Name: EnemyTest
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8474629556110092953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8474629556110092955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_Children:
+  - {fileID: 945018383}
+  - {fileID: 1527453145}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8474629556110092952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,33 +401,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   current: {fileID: 8474629556110092903}
-  target: {fileID: 0}
-  gameArea: {fileID: 0}
+  target: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
   enemyMove: {fileID: 8474629556110092901}
---- !u!50 &8474629556110092902
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8474629556110092955}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.16045846
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
+  tileCheck: {fileID: 8945877100097308489, guid: 6f38ee78d446f9f47a9c82aa0bb86eac,
+    type: 3}
+  donePathFind: 0
+  smallWalls: []
 --- !u!61 &8474629556110092903
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -410,7 +423,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04650805, y: -0.07564604}
+  m_Offset: {x: -0.07175434, y: 0.6066768}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -421,7 +434,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.34503675, y: 0.72663665}
+  m_Size: {x: 0.54700696, y: 1.40694}
   m_EdgeRadius: 0
 --- !u!114 &8474629556110092901
 MonoBehaviour:
@@ -438,9 +451,9 @@ MonoBehaviour:
   disableMovement: 0
   timeRemaining: 3
   hasMovedToNextPos: 0
-  movementSpeed: 0.09
+  movementSpeed: 0.06
   enemyPath: {fileID: 8474629556110092952}
-  player: {fileID: 0}
+  player: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
 --- !u!114 &890333053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,3 +468,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   enemyHealth: 5
+--- !u!50 &60397741
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8474629556110092955}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

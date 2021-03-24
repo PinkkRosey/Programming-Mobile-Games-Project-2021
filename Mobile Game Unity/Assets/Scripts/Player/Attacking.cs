@@ -10,8 +10,16 @@ public class Attacking : MonoBehaviour
     [SerializeField] private GameObject doorClosed;
     [SerializeField] private GameObject doorOpen;
     private bool attack = true;
+    private List<GameObject> enemies = null;
+    public static int enemiesLength;
+
+    private void Start()
+    {
+        enemyCounting();
+    }
     private void FixedUpdate()
     {
+
         if (movementJoystick.joystickVec.y != 0)
 
         {
@@ -24,21 +32,31 @@ public class Attacking : MonoBehaviour
             Invoke("Attack", 0.3f);
             
         }
+        if (enemiesLength == 0)
+        {
+            doorClosed.SetActive(false);
+            doorOpen.SetActive(true);
+        }
     }
-
-    private void Attack()
+    public void enemyCounting()
     {
-        
-        List<GameObject> enemies = new List<GameObject>();
+        enemies = new List<GameObject>();
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemies.Add(go);
             sortEnemyListList(enemies);
 
         }
+        enemiesLength = enemies.Count;
+    }
+    private void Attack()
+    {
+        
+     
 
-        if(enemies.Count >0)
+        if(enemiesLength >0)
         {
+            enemyCounting();
             float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
             if(distanceTo <=5)
             {
@@ -49,11 +67,9 @@ public class Attacking : MonoBehaviour
             attack = true;
 
         }
+       
 
-        if(enemies.Count ==0)
-        { doorClosed.SetActive(false);
-            doorOpen.SetActive(true);
-        }
+       
         
     }
     public void sortEnemyListList(List<GameObject> enemies)

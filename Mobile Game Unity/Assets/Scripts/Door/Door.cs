@@ -12,7 +12,19 @@ public class Door : MonoBehaviour
         {
             Scene scene = SceneManager.GetActiveScene();
             int sceneIndex = scene.buildIndex;
-            SceneManager.LoadScene(sceneIndex + 1);
+            
+
+            int nextIndex = sceneIndex + 1;
+            if(nextIndex ==11 )
+            {
+                HealthSave.maxLvL = "finalLevel";
+                SceneManager.LoadScene(nextIndex);
+            }
+            else
+            {
+                SceneManager.LoadScene(nextIndex);
+            }
+            
         }
     }
 }

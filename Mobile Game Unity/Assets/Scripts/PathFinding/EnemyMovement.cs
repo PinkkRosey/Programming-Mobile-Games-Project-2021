@@ -10,9 +10,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private PathFinding enemyPath;
     [SerializeField] private GameObject player;
-   
-    // Update is called once per frame
+    private bool activateMovement = false;
     
+    
+
+    // Update is called once per frame
+
     void Start()
     {
        
@@ -23,52 +26,43 @@ public class EnemyMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        float distanceTo = Vector2.Distance(this.transform.position, player.transform.position);
-        if (distanceTo <= 6)
+        
+        
+        
+        if (enemyPath.finalPath != null)
         {
-
-
-
-            if (enemyPath.finalPath != null)
+         
+            if (enemyPath.finalPath.returnCount() > 0 )
             {
 
 
-                //only run it if its not null
-
-                if (enemyPath.finalPath.returnCount() > 0 && disableMovement == false)
+                Vector3 movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
+                //if it has travelled to the next pos
+                if (transform.position == movementTarget)
                 {
 
-
-                    Vector3 movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
-                    //if it has travelled to the next pos
-                    if (transform.position == movementTarget)
+                    hasMovedToNextPos = true;
+                    enemyPath.finalPath.remove0Fromlist();
+                    
+                    if (enemyPath.finalPath.returnCount() > 0)
                     {
 
-                        hasMovedToNextPos = true;
-                        enemyPath.finalPath.remove0Fromlist();
-                        if (enemyPath.finalPath.returnCount() > 0)
-                        {
-
-                            movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
-                            transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
-                        }
-                        else
-                        {
-                            return;
-                        }
-
-                        //reassign the target pos to a new spot
-                    }
-                    else
-                    {
-                        hasMovedToNextPos = false;
+                        movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
                         transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
                     }
-
-                    //move
+                   
+                    //reassign the target pos to a new spot
+                }
+                else
+                {
+                    hasMovedToNextPos = false;
+                    transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
                 }
 
+                //move
             }
+
+
         }
     }
   
@@ -77,9 +71,9 @@ public class EnemyMovement : MonoBehaviour
       
      if(collision.gameObject.tag == "CollisionCheck" )
         {
-            
-            hasMovedToNextPos = true;
-            
+
+
+            hasMovedToNextPos = false;
             disableMovement = true;
         }
        
@@ -97,7 +91,7 @@ public class EnemyMovement : MonoBehaviour
 
     void DisableMovement()
     {
-        
+       
         disableMovement = false;
        
     }

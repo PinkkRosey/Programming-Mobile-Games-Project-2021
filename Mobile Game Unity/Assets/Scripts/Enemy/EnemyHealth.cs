@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] public int maxHealth;
     [SerializeField] public int enemyHealth;
+   
     // Start is called before the first frame update
 
     private void Start()
@@ -24,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (enemyHealth<=0)
         {
+            Attacking.enemiesLength--;
             Destroy(this.gameObject);
         }
     }

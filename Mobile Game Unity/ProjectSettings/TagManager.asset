@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Bullet
   - CollisionCheck
+  - obstacle
+  - healthPot
   layers:
   - Default
   - TransparentFX

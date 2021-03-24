@@ -8,8 +8,13 @@ public class HealthDisplay : MonoBehaviour
     [SerializeField] private Health health;
     [SerializeField] private Image healthImage;
     // Update is called once per frame
+
+    private void Start()
+    {
+        healthImage.fillAmount = (float)HealthSave.currentHealth / (float)health.maxHealth;
+    }
     void Update()
     {
-        healthImage.fillAmount = (float)health.playerHealth / (float)health.maxHealth;
+        healthImage.fillAmount = (float)HealthSave.currentHealth / (float)health.maxHealth;
     }
 }
