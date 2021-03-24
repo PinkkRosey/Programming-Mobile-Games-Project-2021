@@ -258,7 +258,7 @@ public class PathFinding : MonoBehaviour
                 }
                 else
                 {
-                    Debug.DrawLine(new Vector2(results.getPosition().x, results.getPosition().y), new Vector2(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y), Color.red, 1, false);
+                    //Debug.DrawLine(new Vector2(results.getPosition().x, results.getPosition().y), new Vector2(results.returnPrev().getPosition().x, results.returnPrev().getPosition().y), Color.red, 1, false);
                     finalPath.insertToPath(results);
                   //draw a line to prev
                     results = results.returnPrev();

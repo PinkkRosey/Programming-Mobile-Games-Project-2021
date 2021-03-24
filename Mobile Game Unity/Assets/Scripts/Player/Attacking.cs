@@ -34,12 +34,13 @@ public class Attacking : MonoBehaviour
         }
         
     }
-    private void Update()
+    private void LateUpdate()
     {
         if (enemiesLength == 0)
         {
-            doorClosed.SetActive(false);
             doorOpen.SetActive(true);
+            doorClosed.SetActive(false);
+            
         }
     }
     public void enemyCounting()

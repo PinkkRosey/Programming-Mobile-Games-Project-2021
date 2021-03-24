@@ -2600,7 +2600,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -7, y: -11, z: 0}
   m_Size: {x: 14, y: 21, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -2663,12 +2663,12 @@ PrefabInstance:
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.48
+      value: -7.35
       objectReference: {fileID: 0}
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
@@ -3065,7 +3065,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -6, y: -5, z: 0}
   m_Size: {x: 11, y: 15, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -3231,6 +3231,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 853633286}
     m_Modifications:
+    - target: {fileID: 6831743931266713688, guid: ec88a27b51736da4e8769a090faa4ae8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6831743931266713690, guid: ec88a27b51736da4e8769a090faa4ae8,
         type: 3}
       propertyPath: m_Name
@@ -3290,6 +3295,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831743931266713702, guid: ec88a27b51736da4e8769a090faa4ae8,
+        type: 3}
+      propertyPath: m_TileAnchor.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831743931266713702, guid: ec88a27b51736da4e8769a090faa4ae8,
+        type: 3}
+      propertyPath: m_TileAnchor.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec88a27b51736da4e8769a090faa4ae8, type: 3}
@@ -3455,6 +3470,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186481492513570770, guid: de736b24c26152545bc39691ed71ed69,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186481492513570772, guid: de736b24c26152545bc39691ed71ed69,
+        type: 3}
+      propertyPath: m_TileAnchor.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186481492513570772, guid: de736b24c26152545bc39691ed71ed69,
+        type: 3}
+      propertyPath: m_TileAnchor.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de736b24c26152545bc39691ed71ed69, type: 3}
@@ -5626,7 +5656,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -7, y: -11, z: 0}
   m_Size: {x: 14, y: 23, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -5816,7 +5846,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -6, y: -5, z: 0}
   m_Size: {x: 11, y: 15, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1

@@ -61,7 +61,7 @@ public class TileCheck : MonoBehaviour
                 {
                     if(tile.sprite ==sprite0)
                     {
-                        Vector2 pos1 = new Vector2(posi.x + tileWid / 2, posi.y + tileHeigh / 2);
+                        Vector2 pos1 = new Vector2(posi.x+0.5f + tileWid / 2, posi.y+ 0.5f + tileHeigh / 2);
                         if (!unWalkable.Contains(pos1))
                         {
                             unWalkable.Add(pos1);
@@ -69,7 +69,7 @@ public class TileCheck : MonoBehaviour
                     }
                     else if(tile.sprite == sprite1)
                     {
-                        Vector2 pos1 = new Vector2(posi.x - tileWid / 2, posi.y + tileHeigh / 2);
+                        Vector2 pos1 = new Vector2(posi.x+ 0.5f - tileWid / 2, posi.y + 0.5f + tileHeigh / 2);
                         if (!unWalkable.Contains(pos1))
                         {
                             unWalkable.Add(pos1);
@@ -78,7 +78,7 @@ public class TileCheck : MonoBehaviour
                     }
                     else if(tile.sprite ==sprite2)
                     {
-                        Vector2 pos1 = new Vector2(posi.x + tileWid / 2, posi.y - tileHeigh / 2);
+                        Vector2 pos1 = new Vector2(posi.x + 0.5f + tileWid / 2, posi.y + 0.5f - tileHeigh / 2);
                         if (!unWalkable.Contains(pos1))
                         {
                             unWalkable.Add(pos1);
@@ -87,7 +87,7 @@ public class TileCheck : MonoBehaviour
                     }
                     else if (tile.sprite == sprite3)
                     {
-                        Vector2 pos1 = new Vector2(posi.x - tileWid / 2, posi.y - tileHeigh / 2);
+                        Vector2 pos1 = new Vector2(posi.x + 0.5f - tileWid / 2, posi.y + 0.5f - tileHeigh / 2);
                         if (!unWalkable.Contains(pos1))
                         {
                             unWalkable.Add(pos1);
@@ -95,8 +95,8 @@ public class TileCheck : MonoBehaviour
                     }
                     else if (tile.sprite == sprite4)
                     {
-                        Vector2 pos1 = new Vector2(posi.x + tileWid / 2, posi.y - tileHeigh / 2);
-                        Vector2 pos2 = new Vector2(posi.x - tileWid / 2, posi.y - tileHeigh / 2);
+                        Vector2 pos1 = new Vector2(posi.x + 0.5f + tileWid / 2, posi.y + 0.5f - tileHeigh / 2);
+                        Vector2 pos2 = new Vector2(posi.x + 0.5f - tileWid / 2, posi.y + 0.5f - tileHeigh / 2);
                         if (!unWalkable.Contains(pos1))
                         {
                             unWalkable.Add(pos1);
@@ -109,8 +109,8 @@ public class TileCheck : MonoBehaviour
                     }
                     else if (tile.sprite == sprite5)
                     {
-                        Vector2 pos1 = new Vector2(posi.x + tileWid / 2, posi.y + tileHeigh / 2);
-                        Vector2 pos2 = new Vector2(posi.x - tileWid / 2, posi.y + tileHeigh / 2);
+                        Vector2 pos1 = new Vector2(posi.x + 0.5f + tileWid / 2, posi.y + 0.5f + tileHeigh / 2);
+                        Vector2 pos2 = new Vector2(posi.x + 0.5f - tileWid / 2, posi.y + 0.5f + tileHeigh / 2);
                         if (!unWalkable.Contains(pos1))
                         {
                             unWalkable.Add(pos1);
@@ -123,8 +123,8 @@ public class TileCheck : MonoBehaviour
                     }
                     else if (tile.sprite == sprite6)
                     {
-                        Vector2 pos1= new Vector2(posi.x + tileWid / 2, posi.y + tileHeigh / 2);
-                        Vector2 pos2 = new Vector2(posi.x + tileWid / 2, posi.y - tileHeigh / 2);
+                        Vector2 pos1= new Vector2(posi.x + 0.5f + tileWid / 2, posi.y + 0.5f + tileHeigh / 2);
+                        Vector2 pos2 = new Vector2(posi.x + 0.5f + tileWid / 2, posi.y + 0.5f - tileHeigh / 2);
                         if (!unWalkable.Contains(pos1))
                         {
                             unWalkable.Add(pos1);
@@ -137,8 +137,8 @@ public class TileCheck : MonoBehaviour
                     }
                     else
                     {
-                        Vector2 pos1 = new Vector2(posi.x - tileWid / 2, posi.y - tileHeigh / 2);
-                        Vector2 pos2 = new Vector2(posi.x - tileWid / 2, posi.y + tileHeigh / 2);
+                        Vector2 pos1 = new Vector2(posi.x + 0.5f - tileWid / 2, posi.y + 0.5f - tileHeigh / 2);
+                        Vector2 pos2 = new Vector2(posi.x + 0.5f - tileWid / 2, posi.y + 0.5f + tileHeigh / 2);
                         if (!unWalkable.Contains(pos1))
                         {
                             unWalkable.Add(pos1);
@@ -154,10 +154,10 @@ public class TileCheck : MonoBehaviour
                 else
                 {
                     
-                    Vector2 pos1 = new Vector2(posi.x - tileWid / 2, posi.y - tileHeigh / 2);
-                    Vector2 pos2 = new Vector2(posi.x + tileWid / 2, posi.y - tileHeigh / 2);
-                    Vector2 pos3 = new Vector2(posi.x - tileWid / 2, posi.y + tileHeigh / 2);
-                    Vector2 pos4 = new Vector2(posi.x + tileWid / 2, posi.y + tileHeigh / 2);
+                    Vector2 pos1 = new Vector2(posi.x + 0.5f - tileWid / 2, posi.y + 0.5f - tileHeigh / 2);
+                    Vector2 pos2 = new Vector2(posi.x + 0.5f + tileWid / 2, posi.y + 0.5f - tileHeigh / 2);
+                    Vector2 pos3 = new Vector2(posi.x + 0.5f - tileWid / 2, posi.y + 0.5f + tileHeigh / 2);
+                    Vector2 pos4 = new Vector2(posi.x + 0.5f + tileWid / 2, posi.y + 0.5f + tileHeigh / 2);
 
                     if (!unWalkable.Contains(pos1))
                     {
@@ -183,7 +183,7 @@ public class TileCheck : MonoBehaviour
              
             }
 
-            //helper();
+            helper();
         }
     }
 

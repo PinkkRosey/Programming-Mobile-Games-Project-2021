@@ -591,7 +591,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -3, y: -10, z: 0}
   m_Size: {x: 8, y: 20, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -725,7 +725,6 @@ GameObject:
   - component: {fileID: 1040342397}
   - component: {fileID: 1040342399}
   - component: {fileID: 1040342398}
-  - component: {fileID: 1040342400}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -2531,7 +2530,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -7, y: -11, z: 0}
   m_Size: {x: 14, y: 21, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -2550,22 +2549,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!208 &1040342400
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040342396}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 7.0000005, y: 10.500001, z: 0.00001}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.5, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1001 &1148575583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2844,7 +2827,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -3, y: -10, z: 0}
   m_Size: {x: 8, y: 20, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -2934,6 +2917,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831743931266713702, guid: ec88a27b51736da4e8769a090faa4ae8,
+        type: 3}
+      propertyPath: m_TileAnchor.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831743931266713702, guid: ec88a27b51736da4e8769a090faa4ae8,
+        type: 3}
+      propertyPath: m_TileAnchor.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec88a27b51736da4e8769a090faa4ae8, type: 3}
@@ -5015,7 +5008,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -7, y: -11, z: 0}
   m_Size: {x: 14, y: 23, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -5298,6 +5291,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7186481492513570772, guid: de736b24c26152545bc39691ed71ed69,
+        type: 3}
+      propertyPath: m_TileAnchor.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186481492513570772, guid: de736b24c26152545bc39691ed71ed69,
+        type: 3}
+      propertyPath: m_TileAnchor.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de736b24c26152545bc39691ed71ed69, type: 3}
 --- !u!4 &2101807126 stripped
@@ -5348,12 +5351,12 @@ PrefabInstance:
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.46
+      value: -7.36
       objectReference: {fileID: 0}
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}

@@ -159,12 +159,12 @@ PrefabInstance:
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.984
+      value: -7.49
       objectReference: {fileID: 0}
     - target: {fileID: 5791529469502884698, guid: 3da34881395d4504e9a570e4b9259267,
         type: 3}
@@ -2433,7 +2433,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -7, y: -10, z: 0}
   m_Size: {x: 15, y: 21, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -2479,6 +2479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186481492513570768, guid: de736b24c26152545bc39691ed71ed69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7186481492513570769, guid: de736b24c26152545bc39691ed71ed69,
         type: 3}
@@ -2539,6 +2544,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186481492513570772, guid: de736b24c26152545bc39691ed71ed69,
+        type: 3}
+      propertyPath: m_TileAnchor.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186481492513570772, guid: de736b24c26152545bc39691ed71ed69,
+        type: 3}
+      propertyPath: m_TileAnchor.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de736b24c26152545bc39691ed71ed69, type: 3}
@@ -2651,6 +2666,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorClosed
       objectReference: {fileID: 0}
+    - target: {fileID: 6831743931266713690, guid: ec88a27b51736da4e8769a090faa4ae8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6831743931266713691, guid: ec88a27b51736da4e8769a090faa4ae8,
         type: 3}
       propertyPath: m_RootOrder
@@ -2705,6 +2725,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831743931266713702, guid: ec88a27b51736da4e8769a090faa4ae8,
+        type: 3}
+      propertyPath: m_TileAnchor.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831743931266713702, guid: ec88a27b51736da4e8769a090faa4ae8,
+        type: 3}
+      propertyPath: m_TileAnchor.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec88a27b51736da4e8769a090faa4ae8, type: 3}
@@ -4318,7 +4348,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -6, y: -10, z: 0}
   m_Size: {x: 9, y: 20, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -4472,7 +4502,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
   m_Size: {x: 3, y: 6, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
