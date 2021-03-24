@@ -29,7 +29,7 @@ public class Attacking : MonoBehaviour
         else if(attack ==true)
         {
             attack = false; //Set it to false to avoid running again until 1 sec has passed
-            Invoke("Attack", 0.3f);
+            Invoke("Attack", 0.4f);
             
         }
         
