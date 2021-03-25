@@ -73,11 +73,10 @@ public class MovementJoystick: MonoBehaviour
     {
         if(CameraCont.completedRunning ==true)
         {
-            if (CameraCont.completedRunning == false)
-            {
+            
                 joystickVec = Vector2.zero;
                 joystick.transform.position = joystickBG.transform.position;
-            }
+            
         }
     }
 }
