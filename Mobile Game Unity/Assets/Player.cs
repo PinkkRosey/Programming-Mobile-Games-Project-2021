@@ -11,13 +11,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (CameraCont.completedRunning == false)
-        {
-
-            transform.Translate(new Vector2(movementJoystick.joystickVec.x * playerSpeed, movementJoystick.joystickVec.y * playerSpeed) * Time.deltaTime);
+        
+            rb.velocity = movementJoystick.joystickVec * playerSpeed;
 
 
-
-        }
+        
     }
 }
