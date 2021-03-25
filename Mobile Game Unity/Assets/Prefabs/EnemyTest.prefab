@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 718318626}
   - component: {fileID: 718318628}
   - component: {fileID: 718318627}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 799723505}
   - component: {fileID: 799723504}
   - component: {fileID: 1229739764996806793}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 945018386}
   - component: {fileID: 945018385}
   - component: {fileID: 945018384}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1527453145}
   - component: {fileID: 1527453146}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 8474629556110092901}
   - component: {fileID: 890333053}
   - component: {fileID: 60397741}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyTest
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -406,9 +406,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   enemyMove: {fileID: 8474629556110092901}
-  tileCheck: {fileID: 8945877100097308489, guid: 6f38ee78d446f9f47a9c82aa0bb86eac,
-    type: 3}
   donePathFind: 0
+  affected:
+    serializedVersion: 2
+    m_Bits: 4224
   smallWalls: []
 --- !u!61 &8474629556110092903
 BoxCollider2D:

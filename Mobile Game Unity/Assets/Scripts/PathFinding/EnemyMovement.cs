@@ -26,43 +26,45 @@ public class EnemyMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
-        
-        
-        if (enemyPath.finalPath != null)
+
+        if (CameraCont.completedRunning == false)
         {
-         
-            if (enemyPath.finalPath.returnCount() > 0 )
+
+            if (enemyPath.finalPath != null)
             {
 
-
-                Vector3 movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
-                //if it has travelled to the next pos
-                if (transform.position == movementTarget)
+                if (enemyPath.finalPath.returnCount() > 0)
                 {
 
-                    hasMovedToNextPos = true;
-                    enemyPath.finalPath.remove0Fromlist();
-                    
-                    if (enemyPath.finalPath.returnCount() > 0)
+
+                    Vector3 movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
+                    //if it has travelled to the next pos
+                    if (transform.position == movementTarget)
                     {
 
-                        movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
+                        hasMovedToNextPos = true;
+                        enemyPath.finalPath.remove0Fromlist();
+
+                        if (enemyPath.finalPath.returnCount() > 0)
+                        {
+
+                            movementTarget = new Vector3(enemyPath.finalPath.get0().getPosition().x, enemyPath.finalPath.get0().getPosition().y, 0);
+                            transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
+                        }
+
+                        //reassign the target pos to a new spot
+                    }
+                    else
+                    {
+                        hasMovedToNextPos = false;
                         transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
                     }
-                   
-                    //reassign the target pos to a new spot
-                }
-                else
-                {
-                    hasMovedToNextPos = false;
-                    transform.position = Vector3.MoveTowards(transform.position, movementTarget, movementSpeed);
+
+                    //move
                 }
 
-                //move
+
             }
-
-
         }
     }
   
@@ -83,8 +85,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "CollisionCheck")
         {
-           
-            Invoke("DisableMovement", 0.5f);
+
+            DisableMovement();
         }
       
     }

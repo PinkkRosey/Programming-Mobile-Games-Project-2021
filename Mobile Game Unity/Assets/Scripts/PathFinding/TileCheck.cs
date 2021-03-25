@@ -6,21 +6,21 @@ using UnityEngine.Tilemaps;
 public class TileCheck : MonoBehaviour
 {
     [SerializeField] private Tilemap tilemap;
-    public List<Vector2> unWalkable;
-    private float tileWid;
-    private float tileHeigh;
-    [SerializeField] List<Sprite> wallList;
-    [SerializeField] private Sprite sprite0;
+    [SerializeField] public static List<Vector2> unWalkable;
+    private static float tileWid;
+    private static float tileHeigh;
+    [SerializeField] static List<Sprite> wallList;
+    [SerializeField] private  Sprite sprite0;
     [SerializeField] private Sprite sprite1;
-    [SerializeField] private Sprite sprite2;
-    [SerializeField] private Sprite sprite3;
-    [SerializeField] private Sprite sprite4;
-    [SerializeField] private Sprite sprite5;
-    [SerializeField] private Sprite sprite6;
-    [SerializeField] private Sprite sprite7;
+    [SerializeField] private  Sprite sprite2;
+    [SerializeField] private  Sprite sprite3;
+    [SerializeField] private  Sprite sprite4;
+    [SerializeField] private  Sprite sprite5;
+    [SerializeField] private  Sprite sprite6;
+    [SerializeField] private  Sprite sprite7;
     
     // Start is called before the first frame update
-    void Awake()
+    public void Awake()
     {
         wallList = new List<Sprite>();
         addWalls();
@@ -36,7 +36,7 @@ public class TileCheck : MonoBehaviour
     // Update is called once per frame
 
 
-    void addWalls()
+   private void addWalls()
     {
         wallList.Add(sprite0);
         wallList.Add(sprite1);
@@ -48,7 +48,7 @@ public class TileCheck : MonoBehaviour
         wallList.Add(sprite7);
         
     }
-    void getUnwalkable()
+    private void getUnwalkable()
     {
         BoundsInt bounds = tilemap.cellBounds;
         foreach (Vector3Int posi in bounds.allPositionsWithin)
@@ -183,7 +183,7 @@ public class TileCheck : MonoBehaviour
              
             }
 
-            helper();
+            
         }
     }
 

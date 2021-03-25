@@ -18,6 +18,7 @@ public class Door : MonoBehaviour
             if(nextIndex ==11 )
             {
                 HealthSave.maxLvL = "finalLevel";
+                
                 SceneManager.LoadScene(nextIndex);
             }
             else

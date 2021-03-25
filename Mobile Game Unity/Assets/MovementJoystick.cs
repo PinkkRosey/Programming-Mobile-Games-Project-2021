@@ -12,6 +12,7 @@ public class MovementJoystick: MonoBehaviour
     private Vector2 joystickTouchPos;
     private Vector2 joystickOriginalPos;
     [SerializeField] private float joystickRadius;
+    private float timeCount = 0.0f;
 
 
     void Start()
@@ -22,30 +23,57 @@ public class MovementJoystick: MonoBehaviour
 
     public void PointerDown()
     {
-        
-        joystickOriginalPos = joystickBG.transform.position;
-        joystickTouchPos = Input.mousePosition;
+        if (CameraCont.completedRunning == false)
+        {
+            joystickOriginalPos = joystickBG.transform.position;
+            
+            if(Application.platform == RuntimePlatform.WindowsEditor)
+            {
+                joystickTouchPos = Input.mousePosition;
+            }
+            else
+            {
+                joystickTouchPos = Input.GetTouch(0).position;
+            }
+            
+        }
     }
+
+
     public void Drag(BaseEventData baseEventData)
     {
-        joystickOriginalPos = joystickBG.transform.position;
-        PointerEventData pointerEventData = baseEventData as PointerEventData;
-        Vector2 dragPos = pointerEventData.position;
-        joystickVec = (dragPos - joystickTouchPos).normalized;
+        if (CameraCont.completedRunning == false)
+        {
 
-        
-        
-        
-        
+            joystickOriginalPos = joystickBG.transform.position;
+            PointerEventData pointerEventData = baseEventData as PointerEventData;
+            Vector2 dragPos = pointerEventData.position;
+            joystickVec = (dragPos - joystickTouchPos).normalized;
+
+
+
+
+
             joystick.transform.position = joystickOriginalPos + joystickVec * joystickRadius;
-          
-        
+
+        }
 
     }
     public void PointerUp()
     {
-        joystickVec = Vector2.zero;
-        joystick.transform.position = joystickBG.transform.position;
+        if (CameraCont.completedRunning == false)
+        {
+            joystickVec = Vector2.zero;
+            joystick.transform.position = joystickBG.transform.position;
+        }
         
+    }
+
+    private void Update()
+    {
+        if(CameraCont.completedRunning ==true)
+        {
+            
+        }
     }
 }

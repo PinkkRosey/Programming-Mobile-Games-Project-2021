@@ -14,11 +14,11 @@ public class SearchLvl
     private List<Vector2> m_unWalkables = null;
 
 
-    public SearchLvl(LayerMask obstacles, Collider2D target,List<Vector2> unableToWalk)
+    public SearchLvl(LayerMask obstacles, Collider2D target )
     {
 
-        
-        m_unWalkables = unableToWalk;
+        m_unWalkables = new List<Vector2>();
+        m_unWalkables = TileCheck.unWalkable;
         
         m_targetCollider = target;
         

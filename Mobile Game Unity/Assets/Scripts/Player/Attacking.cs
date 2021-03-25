@@ -9,39 +9,79 @@ public class Attacking : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject doorClosed;
     [SerializeField] private GameObject doorOpen;
-    private bool attack = true;
-    private List<GameObject> enemies = null;
+    [SerializeField] private LayerMask affected;
+    [SerializeField] public static bool attack = true;
+    [SerializeField] public static bool attack2 = true;
+    private static List<GameObject> enemies = null;
     public static int enemiesLength;
+  
 
     private void Start()
     {
+        attack = true;
+        attack2 = true;
         enemyCounting();
     }
     private void FixedUpdate()
     {
 
-        if (movementJoystick.joystickVec.y != 0)
+        if (CameraCont.completedRunning == false)
+        {
+            if (movementJoystick.joystickVec.y != 0)
 
-        {
-            //only attack while moveing
-            return;
-        }
-        else if(attack ==true)
-        {
-            attack = false; //Set it to false to avoid running again until 1 sec has passed
-            Invoke("Attack", 0.4f);
-            
+            {
+                //only attack while moveing
+                return;
+            }
+            else if (attack == true && attack2 ==true)
+            {
+
+                attack = false; //Set it to false to avoid running again until 1 sec has passed
+                Attack();
+
+            }
         }
         
     }
     private void LateUpdate()
     {
+        
         if (enemiesLength == 0)
         {
             doorOpen.SetActive(true);
             doorClosed.SetActive(false);
             
         }
+        
+      
+           
+        
+    }
+
+    private bool VisionCheck()
+    {
+        if(enemies[0] ==null)
+        {
+            return false;
+        }
+        //we update the playerCount every attack, there is a small delay to this the idea is that in theory we sh
+        float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
+        Vector2 dir = -(transform.position - enemies[0].transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y ), dir, distanceTo, affected);
+    
+        // Does the ray intersect any objects excluding the player layer
+        if (hit.collider.CompareTag("Enemy"))
+        {
+            return true;
+         
+        }
+        else
+        {
+           
+            return false;
+
+        }
+       
     }
     public void enemyCounting()
     {
@@ -54,32 +94,56 @@ public class Attacking : MonoBehaviour
         }
         enemiesLength = enemies.Count;
     }
+
+    
     private void Attack()
     {
-        
-     
 
-        if(enemiesLength >0)
+        enemyCounting();
+
+        if (enemiesLength != 0)
         {
-            enemyCounting();
             float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
-            if(distanceTo <=4)
+            //The distance to the enemy, if its close enough to us start checking if we are in vision range
+            if (distanceTo <= 3.0)
             {
-                Vector3 direction = -(this.transform.position - enemies[0].transform.position).normalized *5;
-               if(enemies[0].GetComponent<EnemyHealth>().enemyHealth>=1)
+
+
+                if (VisionCheck() == true)
                 {
-                    GameObject particle = Instantiate(bullet, spawnPoint);
-                    particle.GetComponent<Rigidbody2D>().velocity = direction;
+
+                    if (enemies[0].GetComponent<EnemyHealth>().enemyHealth >= 1)
+                    {
+                        Vector3 direction = -(transform.position - enemies[0].transform.position).normalized * 5;
+                        GameObject particle = Instantiate(bullet, spawnPoint);
+                        particle.GetComponent<Rigidbody2D>().velocity = direction;
+                    }
+                    Invoke("shootWindow", 0.5f);
+
                 }
+                else
+                {
+                    attack = true;
+                }
+
                 
             }
-            attack = true;
-
+            else
+            {
+                attack = true;
+            }
         }
-       
 
        
         
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+    public void shootWindow()
+    {
+        attack = true;
     }
     public void sortEnemyListList(List<GameObject> enemies)
     {

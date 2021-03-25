@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
 public class PathFinding : MonoBehaviour
 {
     [SerializeField] private Node.Position m_end;
     [SerializeField] private Node.Position m_current;
-    [SerializeField] private Node.Position m_start;
+    [SerializeField] private static Node.Position m_start;
 
     [SerializeField] private LayerMask obstacles;
     [SerializeField] private BoxCollider2D current;
@@ -16,10 +17,10 @@ public class PathFinding : MonoBehaviour
     [SerializeField] private LayerMask targetMask;
 
     [SerializeField] private EnemyMovement enemyMove;
-    [SerializeField] private TileCheck tileCheck;
+
     private float distanceTo;
-    private float m_halfWidth;
-    private float m_halfHeight;
+    private static float m_halfWidth;
+    private static float m_halfHeight;
 
     private int resultNotFound;
     private float m_mapWidth;
@@ -27,14 +28,16 @@ public class PathFinding : MonoBehaviour
     private bool activatePath = false;
     private Node results = new Node();
     public EnemyPathing finalPath = null;
-    private Node.Position m_old;
-    private Node.Position m_new;
+    private static Node.Position m_old;
+    private static Node.Position m_new;
     [SerializeField] public bool donePathFind;
-    
-    private List<Vector2> unWalkable;
+    [SerializeField] public LayerMask affected;
+    private static List<Vector2> unWalkable;
     [SerializeField] Sprite[] smallWalls;
-    private float tileWid;
+    private static float tileWid;
     private Vector3 movementTarget;
+    private bool disableCheck;
+    private UnityEngine.Camera cam;
     PathFinding(Node.Position end, Node.Position start, Node.Position current)
     {
         m_end = end;
@@ -43,50 +46,70 @@ public class PathFinding : MonoBehaviour
 
 
     }
-    void Awake()
+    void Start()
     {
+        cam = UnityEngine.Camera.main;
         tileWid = 0.5f;
         m_halfWidth = 0.5f;
         m_halfHeight = 0.5f;
-
-        //m_halfWidth = current.bounds.size.x / 2;
-        //m_halfHeight = current.bounds.size.y / 2;
-
-    }
-    void Start()
-    {
         unWalkable = new List<Vector2>();
-       
-        unWalkable = tileCheck.unWalkable;
+
+        unWalkable = TileCheck.unWalkable;
         m_start.setValues(transform.position.x, transform.position.y);
         m_end.setValues(target.transform.position.x, target.transform.position.y);
         m_old.setValues(-100f, -100f);
         m_new = m_end;
         m_current.setValues(transform.position.x, transform.position.y);
+        disableCheck = false;
+        activatePath = false;
+        //m_halfWidth = current.bounds.size.x / 2;
+        //m_halfHeight = current.bounds.size.y / 2;
 
-       
-        
-       
     }
+
 
   
 
    
+       
+    void checkIfInVision()
+    {
         
+        if (CameraCont.completedRunning ==false)
+        {
+            float distanceTo = Vector2.Distance(transform.position, new Vector2(target.transform.position.x, target.transform.position.y));
+            Vector2 dir = -(transform.position - target.transform.position);
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, distanceTo, affected);
+            // Does the ray intersect any objects excluding the player layer
+            if (hit.collider.tag == "CollisionCheck" || hit.collider.tag == "character")
+            {
+                //Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, Color.black);
+                if (distanceTo <= 4.5)
+                {
+                    activatePath = true;
+                    disableCheck = true;
+                }
+            }
+            else
+            {
+               // Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, Color.cyan);
+
+            }
+            
+        }
+      
+      
+    }
     
     void FixedUpdate()
     {
-      
-      
-        float distanceTo = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), new Vector2(target.transform.position.x, target.transform.position.y));
-        
-       
-        if (distanceTo <= 4)
+        if(disableCheck ==false)
         {
-            activatePath = true;
+            checkIfInVision();
         }
 
-
+        
+      
         if (activatePath == true)
         {
             if (finalPath == null)
@@ -172,7 +195,7 @@ public class PathFinding : MonoBehaviour
 
 
         Node firstNode = new Node(m_current, null, m_end, m_start);
-        lineDrawer(m_current.x, m_current.y);
+        
             finalPath = new EnemyPathing();
         
     OpenList openedList = new OpenList();
@@ -180,7 +203,7 @@ public class PathFinding : MonoBehaviour
         openedList.insertToOpenList(firstNode);
         
         ClosedList closedList = new ClosedList();
-        SearchLvl search_lvl = new SearchLvl( obstacles,current,unWalkable);
+        SearchLvl search_lvl = new SearchLvl( obstacles,current);
 
         while(openedList.isEmpty() == false)
         {

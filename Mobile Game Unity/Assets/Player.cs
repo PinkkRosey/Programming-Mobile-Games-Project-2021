@@ -9,18 +9,15 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     // Start is called before the first frame update
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-        if(movementJoystick.joystickVec.y != 0)
+        if (CameraCont.completedRunning == false)
         {
-          
-            rb.velocity = new Vector2(movementJoystick.joystickVec.x * playerSpeed, movementJoystick.joystickVec.y * playerSpeed);
+
+            transform.Translate(new Vector2(movementJoystick.joystickVec.x * playerSpeed, movementJoystick.joystickVec.y * playerSpeed) * Time.deltaTime);
+
+
 
         }
-      else
-        {
-            rb.velocity = Vector2.zero;
-        }            
     }
 }

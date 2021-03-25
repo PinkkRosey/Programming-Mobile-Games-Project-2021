@@ -15,10 +15,13 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            if(collision.CompareTag("Bullet"))
+        if(CameraCont.completedRunning == false)
+        {
+            if (collision.CompareTag("Bullet"))
             {
-            Destroy(collision.gameObject);
-            enemyHealth--;
+                Destroy(collision.gameObject);
+                enemyHealth--;
+            }
         }
     }
     private void Update()
