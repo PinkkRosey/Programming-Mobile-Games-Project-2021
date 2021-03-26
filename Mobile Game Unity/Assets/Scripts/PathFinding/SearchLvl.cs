@@ -14,13 +14,13 @@ public class SearchLvl
     private List<Vector2> m_unWalkables = null;
 
 
-    public SearchLvl(LayerMask obstacles, Collider2D target )
+    public SearchLvl()
     {
 
         m_unWalkables = new List<Vector2>();
         m_unWalkables = TileCheck.unWalkable;
         
-        m_targetCollider = target;
+        
         
   
        
@@ -31,15 +31,16 @@ public class SearchLvl
        
         Vector2 myPosition = new Vector2(posX, posY);
 
+       
         if (m_unWalkables.Contains(myPosition))
          {
-            
+           
              return false;
          }
          else
          {
-           
-             return true;
+
+            return true;
          }
 
          
@@ -71,7 +72,7 @@ public class SearchLvl
         List<Node.Position> m_results = new List<Node.Position>();
         Node.Position current = new Node.Position();
         current.setValues(posX,posY);
-       
+        
         if(isWalkable(current.x+ (colWidth), current.y) == true)
             {
             Node.Position plusOneX = new Node.Position();

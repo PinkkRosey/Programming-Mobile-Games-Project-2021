@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementJoystick: {fileID: 0}
-  playerSpeed: 5
+  playerSpeed: 4
   rb: {fileID: 5791529469502884703}
 --- !u!114 &528171343
 MonoBehaviour:

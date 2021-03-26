@@ -30,7 +30,7 @@ public class TileCheck : MonoBehaviour
 
      
         getUnwalkable();
-        helper();
+        
         
     }
 

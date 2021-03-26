@@ -41,6 +41,7 @@ public class EnemyMovement : MonoBehaviour
                     //if it has travelled to the next pos
                     if (transform.position == movementTarget)
                     {
+                        
 
                         hasMovedToNextPos = true;
                         enemyPath.finalPath.remove0Fromlist();

@@ -3228,7 +3228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 168029563, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: playerSpeed
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 168029563, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: movementJoystick

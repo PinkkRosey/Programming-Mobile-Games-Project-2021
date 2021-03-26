@@ -59,7 +59,7 @@ public class PathFinding : MonoBehaviour
         m_end.setValues(target.transform.position.x, target.transform.position.y);
         m_old.setValues(-100f, -100f);
         m_new = m_end;
-        m_current.setValues(transform.position.x, transform.position.y);
+        m_current.setValues(this.transform.position.x, this.transform.position.y);
         disableCheck = false;
         activatePath = false;
         //m_halfWidth = current.bounds.size.x / 2;
@@ -119,9 +119,10 @@ public class PathFinding : MonoBehaviour
             if (finalPath == null)
             {
                 m_new.setValues(target.transform.position.x, target.transform.position.y);
+                
                 m_current.setValues(this.transform.position.x, this.transform.position.y);
 
-
+               
                 m_end.setValues(target.transform.position.x, target.transform.position.y);
 
                 doPathFinding();
@@ -138,13 +139,17 @@ public class PathFinding : MonoBehaviour
             {
                 if(finalPath.returnCount()>0)
                 {
+                    
                     movementTarget = new Vector3(finalPath.get0().getPosition().x, finalPath.get0().getPosition().y, 0);
+                   
                 }
               
             }
 
             if (transform.position == movementTarget)
             {
+                //WE ARE CLOSE ENOUGH FOR THE CONSOLE TO THINK WE EQUAL, SO MAKE SURE WE DO EQUAL!!
+                transform.position = movementTarget;
                 m_new.setValues(target.transform.position.x, target.transform.position.y);
                 m_current.setValues(this.transform.position.x, this.transform.position.y);
 
@@ -194,6 +199,7 @@ public class PathFinding : MonoBehaviour
 
     public void doPathFinding()
     {
+       
         
 
 
@@ -207,12 +213,13 @@ public class PathFinding : MonoBehaviour
         openedList.insertToOpenList(firstNode);
         
         ClosedList closedList = new ClosedList();
-        SearchLvl search_lvl = new SearchLvl( obstacles,current);
+        SearchLvl search_lvl = new SearchLvl();
 
         while(openedList.isEmpty() == false)
         {
           
              Node secondNodes = openedList.get0();
+            
             Node secondNode = new Node(secondNodes.getPosition(), secondNodes.returnPrev(),m_end, m_start);
          
            
@@ -299,7 +306,7 @@ public class PathFinding : MonoBehaviour
         {
             donePathFind = true;
             finalPath = null;
-            Debug.Log("not found");
+           //NOT FOUND
             
             
         }

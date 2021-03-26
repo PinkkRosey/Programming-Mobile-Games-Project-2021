@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 8474629556110092901}
   - component: {fileID: 890333053}
   - component: {fileID: 60397741}
-  - component: {fileID: 660855634666402905}
+  - component: {fileID: 1755386248128549552}
   m_Layer: 9
   m_Name: EnemyTest
   m_TagString: Enemy
@@ -426,7 +426,7 @@ MonoBehaviour:
   disableMovement: 0
   timeRemaining: 3
   hasMovedToNextPos: 0
-  movementSpeed: 0.06
+  movementSpeed: 0.05
   enemyPath: {fileID: 8474629556110092952}
   player: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
 --- !u!114 &890333053
@@ -464,8 +464,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &660855634666402905
-CapsuleCollider2D:
+--- !u!61 &1755386248128549552
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -478,5 +478,15 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.4, y: 1.3}
-  m_Direction: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1.3}
+  m_EdgeRadius: 0
