@@ -79,9 +79,13 @@ public class PathFinding : MonoBehaviour
         {
             float distanceTo = Vector2.Distance(transform.position, new Vector2(target.transform.position.x, target.transform.position.y));
             Vector2 dir = -(transform.position - target.transform.position);
-            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, distanceTo, affected);
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y ), dir, distanceTo, affected);
             // Does the ray intersect any objects excluding the player layer
-            if (hit.collider.tag == "CollisionCheck" || hit.collider.tag == "character")
+           if(hit.collider ==null)
+            {
+                return;
+            }
+            else if (hit.collider.tag == "CollisionCheck" || hit.collider.tag == "character")
             {
                 //Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, Color.black);
                 if (distanceTo <= 4.5)
@@ -92,8 +96,8 @@ public class PathFinding : MonoBehaviour
             }
             else
             {
-               // Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, Color.cyan);
-
+                // Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, Color.cyan);
+                return;
             }
             
         }

@@ -284,7 +284,7 @@ PrefabInstance:
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8591710433126630029, guid: 12f2a6d58d9f7934885f8ea152aa944a,
         type: 3}
@@ -5941,6 +5941,10 @@ PrefabInstance:
       propertyPath: movementJoystick
       value: 
       objectReference: {fileID: 802839457}
+    - target: {fileID: 185866436, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
+      propertyPath: characters
+      value: 
+      objectReference: {fileID: 1829731829}
     - target: {fileID: 528171343, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
       propertyPath: doorOpen
       value: 
@@ -6038,3 +6042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70c6da7caa51ec4b83a4e37c56daaa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &1829731829 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5791529469502884699, guid: 3da34881395d4504e9a570e4b9259267,
+    type: 3}
+  m_PrefabInstance: {fileID: 1829731826}
+  m_PrefabAsset: {fileID: 0}

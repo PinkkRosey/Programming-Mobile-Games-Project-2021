@@ -17,9 +17,19 @@ public class CameraCont : MonoBehaviour
     private void Awake()
     {
         cam = UnityEngine.Camera.main;
-       
+
+        
+        if(cam.aspect>0.52)
+        {
+            Camera.main.orthographicSize = 12;
+            
+        }
+        else
+        {
+            Camera.main.orthographicSize = 13;
+        }
      
-            Camera.main.orthographicSize = 26*cam.aspect;
+            
         
       
     }
@@ -29,24 +39,28 @@ public class CameraCont : MonoBehaviour
         
 
         completedRunning = false;
+        /*
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
         offset = transform.position - player.transform.position;
+        */
     }
 
     // LateUpdate is called after Update each frame
 
     private void Update()
     {
-     
+     /*
         if (transform.position.y ==savedPos.y)
         {
             completedRunning = false;
         }
+        */
         
 
     }
     void LateUpdate()
     {
+        /*
         // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
         float dist = Vector2.Distance(player.transform.position, transform.position);
        
@@ -90,3 +104,7 @@ public class CameraCont : MonoBehaviour
 
 
 
+        */
+
+    }
+}

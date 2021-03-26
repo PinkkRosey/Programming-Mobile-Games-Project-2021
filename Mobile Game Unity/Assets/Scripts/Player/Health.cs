@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
 {
     
     [SerializeField] public int maxHealth =10;
-
+    [SerializeField] private SpriteRenderer characters;
     private float Maxtimer = 0.3f;
     private int healAmount =3;
     private bool vWindow = false;
@@ -49,25 +49,7 @@ public class Health : MonoBehaviour
     }
 
     
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-       
-        if (CameraCont.completedRunning == false)
-        {
-           
-            
-
-                if (collision.CompareTag("Enemy"))
-                {
-                
-                    Attacking.attack2 = false;
-               
-                
-                }
-                
-            }
-          
-        }
+ 
        
     
     private void OnTriggerExit2D(Collider2D other)
@@ -94,8 +76,10 @@ public class Health : MonoBehaviour
             if(vWindow ==false)
             {
                 vWindow = true;
+                
+                characters.color = Color.red;
                 HealthSave.currentHealth--;
-                Invoke("LoseHealth", 1f);
+                Invoke("LoseHealth", 0.3f);
             }
             
 
@@ -104,7 +88,8 @@ public class Health : MonoBehaviour
 
     private void LoseHealth()
     {
-        
+
+        characters.color = new Color(1f, 1f, 1f, 1f);
         vWindow = false;
     }
 }

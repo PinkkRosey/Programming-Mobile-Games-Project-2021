@@ -67,19 +67,24 @@ public class Attacking : MonoBehaviour
         //we update the playerCount every attack, there is a small delay to this the idea is that in theory we sh
         float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
         Vector2 dir = -(transform.position - enemies[0].transform.position);
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y ), dir, distanceTo, affected);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y ), dir,distanceTo +1f, affected);
     
         // Does the ray intersect any objects excluding the player layer
-        if (hit.collider.CompareTag("Enemy"))
+     
+        if (hit.collider ==null)
         {
-            return true;
+            return false;
          
+        }
+        else if(hit.collider.CompareTag("Enemy"))
+        {
+
+            return true;
+
         }
         else
         {
-           
             return false;
-
         }
        
     }
@@ -105,7 +110,7 @@ public class Attacking : MonoBehaviour
         {
             float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
             //The distance to the enemy, if its close enough to us start checking if we are in vision range
-            if (distanceTo <= 3.0)
+            if (distanceTo <=4.0f)
             {
 
 

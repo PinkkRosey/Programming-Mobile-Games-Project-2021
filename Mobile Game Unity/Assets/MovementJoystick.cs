@@ -2,21 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MovementJoystick: MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject joystick;
+    public GameObject joystickParent;
     public GameObject joystickBG;
     public Vector2 joystickVec;
     private Vector2 joystickTouchPos;
     private Vector2 joystickOriginalPos;
     [SerializeField] private float joystickRadius;
     private float timeCount = 0.0f;
+    private Image imageBG;
+    private Image joystickHandle;
 
-
-    void Start()
+    
+    void Awake()
+        
     {
+
+        imageBG = joystick.GetComponent<Image>();
+        joystickHandle = joystickBG.GetComponent<Image>();
+        imageBG.enabled = false;
+        joystickHandle.enabled = false;
         joystickOriginalPos = joystickBG.transform.position;
         
     }
@@ -25,15 +35,18 @@ public class MovementJoystick: MonoBehaviour
     {
         if (CameraCont.completedRunning == false)
         {
-            joystickOriginalPos = joystickBG.transform.position;
-            
-            if(Application.platform == RuntimePlatform.WindowsEditor)
+            imageBG.enabled = true;
+            joystickHandle.enabled = true;
+           
+            if (Application.platform == RuntimePlatform.WindowsEditor)
             {
                 joystickTouchPos = Input.mousePosition;
+                joystickParent.transform.position = Camera.main.ScreenToWorldPoint(joystickTouchPos);
             }
             else
             {
                 joystickTouchPos = Input.GetTouch(0).position;
+                joystickParent.transform.position = Camera.main.ScreenToWorldPoint(joystickTouchPos);
             }
             
         }
@@ -61,11 +74,11 @@ public class MovementJoystick: MonoBehaviour
     }
     public void PointerUp()
     {
-        if (CameraCont.completedRunning == false)
-        {
-            joystickVec = Vector2.zero;
-            joystick.transform.position = joystickBG.transform.position;
-        }
+        imageBG.enabled = false;
+        joystickHandle.enabled = false;
+        joystickVec = Vector2.zero;
+        joystick.transform.position = joystickBG.transform.position;
+        
         
     }
 
