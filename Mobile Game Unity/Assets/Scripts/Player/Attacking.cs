@@ -57,7 +57,7 @@ public class Attacking : MonoBehaviour
            
         
     }
-
+    
     private bool VisionCheck()
     {
         if(enemies[0] ==null)
@@ -65,15 +65,17 @@ public class Attacking : MonoBehaviour
             return false;
         }
         //we update the playerCount every attack, there is a small delay to this the idea is that in theory we sh
-        float distanceTo = Vector2.Distance(this.transform.position, enemies[0].transform.position);
-        Vector2 dir = -(transform.position - enemies[0].transform.position);
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y ), dir,distanceTo +1f, affected);
+        float distanceTo = 50f;
+        Vector2 dir = -(new Vector3(transform.position.x,transform.position.y-0.5f,0f) - enemies[0].transform.position);
+        //the additions are how far away the actual center is technically from its position, its around 0.5
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y -0.5f ), dir,distanceTo , affected);
     
         // Does the ray intersect any objects excluding the player layer
      
         if (hit.collider ==null)
         {
-            return false;
+            //you should in theory only be able to either collide with a wall OR the player so if you dont collide with a wall first, youre in vision
+            return true;
          
         }
         else if(hit.collider.CompareTag("Enemy"))
@@ -84,10 +86,12 @@ public class Attacking : MonoBehaviour
         }
         else
         {
+           
             return false;
         }
        
     }
+    
     public void enemyCounting()
     {
         enemies = new List<GameObject>();
@@ -112,10 +116,9 @@ public class Attacking : MonoBehaviour
             //The distance to the enemy, if its close enough to us start checking if we are in vision range
             if (distanceTo <=4.0f)
             {
-
-
                 if (VisionCheck() == true)
                 {
+
 
                     if (enemies[0].GetComponent<EnemyHealth>().enemyHealth >= 1)
                     {
@@ -124,12 +127,13 @@ public class Attacking : MonoBehaviour
                         particle.GetComponent<Rigidbody2D>().velocity = direction;
                     }
                     Invoke("shootWindow", 0.5f);
-
                 }
                 else
                 {
                     attack = true;
                 }
+
+            
 
                 
             }

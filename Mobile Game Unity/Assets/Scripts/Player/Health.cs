@@ -10,11 +10,11 @@ public class Health : MonoBehaviour
     
     [SerializeField] public int maxHealth =10;
     [SerializeField] private SpriteRenderer characters;
-    private float Maxtimer = 0.3f;
+
     private int healAmount =3;
     private bool vWindow = false;
-    private float currentTime;
-    private bool colliding = true;
+   
+
     private void Awake()
     {
         

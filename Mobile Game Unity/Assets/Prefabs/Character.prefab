@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  characters: {fileID: 0}
+  characters: {fileID: 5791529469502884699}
 --- !u!50 &440396899
 Rigidbody2D:
   serializedVersion: 4
@@ -81,8 +81,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.06, y: 0.17}
+  m_Offset: {x: -0.01, y: 0}
+  m_Size: {x: 0.05, y: 0.17}
   m_Direction: 0
 --- !u!1 &1238146832
 GameObject:
@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1238146832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.013, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5791529469502884698}
@@ -235,8 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45f828252424144c967c28410b155ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementJoystick: {fileID: 0}
-  playerSpeed: 4
+  movementJoystick: {fileID: 1347832576, guid: 155fe7d06211ac14e8c8b103a8da17a1, type: 3}
+  playerSpeed: 6
   rb: {fileID: 5791529469502884703}
 --- !u!114 &528171343
 MonoBehaviour:
@@ -250,11 +250,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b91ebd0190fff48a1f398a5fe55c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementJoystick: {fileID: 0}
+  movementJoystick: {fileID: 1347832576, guid: 155fe7d06211ac14e8c8b103a8da17a1, type: 3}
   bullet: {fileID: 6220996856302978511, guid: f5866c10885990b4d81608920029ccb1, type: 3}
   spawnPoint: {fileID: 1238146833}
-  doorClosed: {fileID: 0}
-  doorOpen: {fileID: 0}
+  doorClosed: {fileID: 6831743931266713690, guid: ec88a27b51736da4e8769a090faa4ae8,
+    type: 3}
+  doorOpen: {fileID: 7186481492513570768, guid: de736b24c26152545bc39691ed71ed69,
+    type: 3}
   affected:
     serializedVersion: 2
     m_Bits: 640
@@ -271,6 +273,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.06, y: 0.17}
+  m_Offset: {x: -0.010000002, y: -0.05826475}
+  m_Size: {x: 0.05, y: 0.063470535}
   m_Direction: 0

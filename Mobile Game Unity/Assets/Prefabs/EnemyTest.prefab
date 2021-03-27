@@ -397,11 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc601cf9a0f9f94aa91c0254317d4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles:
-    serializedVersion: 2
-    m_Bits: 384
-  current: {fileID: 0}
-  target: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
+  target: {fileID: 4185091775982239493, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -410,7 +406,6 @@ MonoBehaviour:
   affected:
     serializedVersion: 2
     m_Bits: 4224
-  smallWalls: []
 --- !u!114 &8474629556110092901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +421,7 @@ MonoBehaviour:
   disableMovement: 0
   timeRemaining: 3
   hasMovedToNextPos: 0
-  movementSpeed: 0.05
+  movementSpeed: 0.07
   enemyPath: {fileID: 8474629556110092952}
   player: {fileID: 5791529469502884696, guid: 3da34881395d4504e9a570e4b9259267, type: 3}
 --- !u!114 &890333053

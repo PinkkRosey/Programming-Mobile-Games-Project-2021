@@ -14,7 +14,7 @@ public class MovementJoystick: MonoBehaviour
     private Vector2 joystickTouchPos;
     private Vector2 joystickOriginalPos;
     [SerializeField] private float joystickRadius;
-    private float timeCount = 0.0f;
+
     private Image imageBG;
     private Image joystickHandle;
 

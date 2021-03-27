@@ -10,9 +10,9 @@ public class PathFinding : MonoBehaviour
     [SerializeField] private Node.Position m_current;
     [SerializeField] private static Node.Position m_start;
 
-    [SerializeField] private LayerMask obstacles;
-    [SerializeField] private BoxCollider2D current;
-    [SerializeField] private GameObject target;
+    
+    
+    [SerializeField] private CapsuleCollider2D target;
 
     [SerializeField] private LayerMask targetMask;
 
@@ -33,7 +33,7 @@ public class PathFinding : MonoBehaviour
     [SerializeField] public bool donePathFind;
     [SerializeField] public LayerMask affected;
     private static List<Vector2> unWalkable;
-    [SerializeField] Sprite[] smallWalls;
+ 
     private static float tileWid;
     private Vector3 movementTarget;
     private bool disableCheck;
@@ -56,7 +56,9 @@ public class PathFinding : MonoBehaviour
 
         unWalkable = TileCheck.unWalkable;
         m_start.setValues(transform.position.x, transform.position.y);
+      
         m_end.setValues(target.transform.position.x, target.transform.position.y);
+
         m_old.setValues(-100f, -100f);
         m_new = m_end;
         m_current.setValues(this.transform.position.x, this.transform.position.y);
@@ -77,17 +79,23 @@ public class PathFinding : MonoBehaviour
         
         if (CameraCont.completedRunning ==false)
         {
-            float distanceTo = Vector2.Distance(transform.position, new Vector2(target.transform.position.x, target.transform.position.y));
-            Vector2 dir = -(transform.position - target.transform.position);
+            float distanceTo = Vector2.Distance(transform.position, new Vector2(target.transform.position.x, target.transform.position.y- 0.5f));
+            Vector2 dir = -(transform.position - new Vector3(target.transform.position.x, target.transform.position.y - 0.5f, 0));
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y ), dir, distanceTo, affected);
             // Does the ray intersect any objects excluding the player layer
            if(hit.collider ==null)
             {
+                  if (distanceTo <= 4.5)
+                {
+                    activatePath = true;
+                    disableCheck = true;
+                }
                 return;
             }
             else if (hit.collider.tag == "CollisionCheck" || hit.collider.tag == "character")
             {
-                //Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, Color.black);
+
+                Debug.DrawRay(new Vector2(transform.position.x, transform.position.y ), dir, Color.black);
                 if (distanceTo <= 4.5)
                 {
                     activatePath = true;
@@ -96,7 +104,8 @@ public class PathFinding : MonoBehaviour
             }
             else
             {
-                // Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.5f), dir, Color.cyan);
+                Debug.DrawRay(new Vector2(transform.position.x, transform.position.y ), dir, Color.cyan);
+
                 return;
             }
             
@@ -131,7 +140,10 @@ public class PathFinding : MonoBehaviour
                 {
 
                     return;
-                } //if its still null after checking for path
+                } //if its still null after checking for path ideally youd like to stop it from calculating always if its null, 
+                //however this should never even occur, there should always be a path, if there isnt its bad level design OR our character is somewhere where it shouldnt get
+
+                //
 
 
             }
